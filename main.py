@@ -3595,3 +3595,5 @@
 # f = open(file, "w")
 # f.writelines(read_line)
 # f.close()
+
+print("Данные в локальном репозитории")
