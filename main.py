@@ -3598,4 +3598,196 @@
 
 # print("Данные в локальном репозитории")
 
-print("Код, созданный на новом устройстве")
+# print("Код, созданный на новом устройстве")
+
+# import os
+
+# dirs = ['Work/F1', 'Work/F2/F21']
+#
+# # for d in dirs:
+# #     os.makedirs(d)
+#
+# files = {
+#     'Work': ['w.txt'],
+#     'Work/F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     'Work/F2/F21': ['f211.txt', 'f212.txt']
+# }
+
+# for key, value in files.items():
+#     for file in value:
+#         file_path = os.path.join(key, file)
+#         open(file_path, 'w').close()
+
+# file_with_text = ['Work/w.txt', 'Work/F1/f12.txt', 'Work/F2/F21/f211.txt', 'Work/F2/F21/f212.txt']
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Некоторый текст для файла {file}")
+
+# Work\w.txt
+# Work/F1\f11.txt
+# Work/F1\f12.txt
+# Work/F1\f13.txt
+# Work/F2/F21\f211.txt
+# Work/F2/F21\f212.txt
+
+
+# def print_tree(topdown):
+#     print(f"Обход Work {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, directory, file in os.walk("work", topdown):
+#         print(root)
+#         print(directory)
+#         print(file)
+#     print("-" * 50)
+#
+#
+# print_tree(False)
+# print_tree(True)
+
+# import os
+# import time
+
+# path = "main.py"
+# print(os.path.getsize(path))
+# print(os.path.getatime(path))
+# print(os.path.getmtime(path))
+# print(os.path.getctime(path))
+#
+# size = os.path.getsize(path)
+# a_time = os.path.getatime(path)
+# m_time = os.path.getmtime(path)
+# c_time = os.path.getctime(path)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(a_time)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(m_time)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(c_time)))
+# print(size)
+# print(size // 1024)
+
+# import os
+#
+#
+# def info_files(root, folder):
+#     for root, dirs, files in os.walk(root):
+#         for file in files:
+#             file_path = os.path.join(root, file)
+#             file_size = os.path.getsize(file_path)
+#             if file_size == 0:
+#                 os.renames(file_path, os.path.join(folder, file))
+#                 print(f"Файл {file} перемещен из папки {root} в папку {folder}")
+#             else:
+#                 print(f"{file_path} - {file_size} bytes")
+#
+#
+# info_files("Work", "Work/empty_files")
+
+
+# ООП
+
+# class Point:
+#     x = 1
+#     y = 2
+
+# p1 = Point()
+# # Point.x = 100
+# # print(p1.x)
+# # print(Point.x)
+# # print(id(p1))
+# # print(id(Point))
+# p1.x = 100
+# p1.y = 50
+# print(p1.x, p1.y)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# print(p2.x, p2.y)
+# print(p2.__dict__)
+# print(Point.__dict__)
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#     def set_coord(self):
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 10
+# p1.set_coord()
+# Point.set_coord(p1)
+#
+# p2 = Point()
+# p2.set_coord()
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#     def set_coord(self, x1, y1):
+#         self.x = x1
+#         self.y = y1
+#
+#
+# p1 = Point()
+# p1.set_coord(5, 10)
+# Point.set_coord(p1, 10, 20)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# p2.set_coord(2, 7)
+# print(p2.__dict__)
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
+#               f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, firs_name, birthday, phone, country, city, address):
+#         self.name = firs_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.city = city
+#         self.address = address
+
+
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+
+
+class Person:
+    skill = 10
+    name = ""
+    surname = ""
+
+    def print_info(self, name, surname):
+        self.name = name
+        self.surname = surname
+        print("Данные сотрудника:", self.name, self.surname)
+
+    def add_skill(self, k):
+        self.skill += k
+        print("Квалификация сотрудника:", self.skill, "\n")
+
+
+p1 = Person()
+p1.print_info("Виктор", "Резник")
+p1.add_skill(3)
+
+p2 = Person()
+p2.print_info("Анна", "Долгих")
+p2.add_skill(2)
