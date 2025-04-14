@@ -4464,39 +4464,40 @@
 # rect.color = "red"
 # print(rect.get_area())
 
-class Rect:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rect(self):
+#         print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
+#
+#
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         self.fon = background
+#         super().__init__(width, height)
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("Фон:", self.fon)
+#
+#
+# class RectBorder(Rect):
+#     def __init__(self, width, height, r_width, r_type, r_color):
+#         super().__init__(width, height)
+#         self.r_width = r_width
+#         self.r_type = r_type
+#         self.r_color = r_color
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Ширина рамки: {self.r_width}\nТип рамки: {self.r_type}\nЦвет рамки: {self.r_color}")
+#
+#
+# shape1 = RectFon(400, 200, "yellow")
+# shape1.show_rect()
+# print()
+# shape2 = RectBorder(600, 300, "1px", "solid", "blue")
+# shape2.show_rect()
 
-    def show_rect(self):
-        print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
-
-
-class RectFon(Rect):
-    def __init__(self, width, height, background):
-        self.fon = background
-        super().__init__(width, height)
-
-    def show_rect(self):
-        super().show_rect()
-        print("Фон:", self.fon)
-
-
-class RectBorder(Rect):
-    def __init__(self, width, height, r_width, r_type, r_color):
-        super().__init__(width, height)
-        self.r_width = r_width
-        self.r_type = r_type
-        self.r_color = r_color
-
-    def show_rect(self):
-        super().show_rect()
-        print(f"Ширина рамки: {self.r_width}\nТип рамки: {self.r_type}\nЦвет рамки: {self.r_color}")
-
-
-shape1 = RectFon(400, 200, "yellow")
-shape1.show_rect()
-print()
-shape2 = RectBorder(600, 300, "1px", "solid", "blue")
-shape2.show_rect()
