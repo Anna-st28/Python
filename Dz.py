@@ -1,62 +1,54 @@
-from math import sqrt
+from abc import ABC
 
 
-class Pair:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+class Human(ABC):
+    def __init__(self, surname, name, age):
+        self.surname = surname
+        self.name = name
+        self.age = age
 
-    def edit_a(self, a):
-        self.a = a
-
-    def edit_b(self, b):
-        self.b = b
-
-    def sum(self):
-        return self.a + self.b
-
-    def mult(self):
-        return self.a * self.b
+    def info(self):
+        return f"Фамилия: {self.surname}, Имя: {self.name}, Возраст: {self.age}"
 
 
-class RightTriangle(Pair):
-    def __init__(self, a, b):
-        super().__init__(a, b)
-        self.c = self.hypotenuse()
+class Student(Human):
+    def __init__(self, surname, name, age, department, group, grade):
+        super().__init__(surname, name, age)
+        self.department = department
+        self.group = group
+        self.grade = grade
 
-    def hypotenuse(self):
-        hypot = round(sqrt(self.a ** 2 + self.b ** 2), 2)
-        print(f"Гипотенуза ABC: {hypot}")
-        return hypot
-
-    def print_info(self):
-        print(f"Прямоугольный треугольник ABC: ({self.a}, {self.b}, {self.c})")
-
-    def square(self):
-        s = 0.5 * self.mult()
-        print(f"Площадь ABC: {s}")
-
-    def edit_a(self, a):
-        super().edit_a(a)
-        self.c = self.hypotenuse()
-
-    def edit_b(self, b):
-        super().edit_b(b)
-        self.c = self.hypotenuse()
+    def info(self):
+        return f"{super().info()}, Факультет: {self.department}, Группа: {self.group}, Курс: {self.grade}"
 
 
-tr = RightTriangle(5, 8)
-tr.print_info()
-tr.square()
-print()
+class Teacher(Human):
+    def __init__(self, surname, name, age, department, experience):
+        super().__init__(surname, name, age)
+        self.department = department
+        self.experience = experience
 
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
+    def info(self):
+        return f"{super().info()}, Кафедра: {self.department}, Стаж: {self.experience}"
 
-print()
 
-tr.edit_a(10)
-tr.edit_b(20)
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
-tr.square()
+class Graduate(Student):
+    def __init__(self, surname, name, age, department, group, grade, thesis):
+        super().__init__(surname, name, age, department, group, grade)
+        self.thesis = thesis
+
+    def info(self):
+        return f"{super().info()}, Тема диплома: {self.thesis}"
+
+
+people = [
+    Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+    Student("Загидулин", "Линар", 32, "РПО", "PD_011", 5),
+    Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
+    Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
+    Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
+    Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+]
+
+for person in people:
+    print(person.info())
