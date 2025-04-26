@@ -1,26 +1,97 @@
-class Student:
+class Clock:
+    __DAY = 86400
 
-    def __init__(self, name, laptop_model, laptop_processor, laptop_memory):
-        self.name = name
-        self.laptop = self.Laptop(laptop_model, laptop_processor, laptop_memory)
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
 
-    def print_student_info(self):
-        print(f"Студент: {self.name}")
-        self.laptop.print_laptop_info()
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
 
-    class Laptop:
+    @staticmethod
+    def __get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
 
-        def __init__(self, model, processor, memory):
-            self.model = model
-            self.processor = processor
-            self.memory = memory
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
 
-        def print_laptop_info(self):
-            print(f"  Ноутбук: {self.model}, процессор: {self.processor}, память: {self.memory} ГБ")
+    def __sub__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec - other.sec)
+
+    def __mul__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec * other.sec)
+
+    def __mod__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        if other.sec == 0:
+            raise ZeroDivisionError("Деление на ноль недопустимо")
+        return Clock(self.sec % other.sec)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return self.sec == other.sec
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __le__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return self.sec <= other.sec
+
+    def __ge__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return self.sec >= other.sec
+
+    def __iadd__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        self.sec = (self.sec + other.sec) % self.__DAY
+        return self
 
 
-Roman = Student("Roman", "HP", "i7", 16)
-vladimir = Student("Vladimir", "HP", "i7", 16)
+c1 = Clock(100)
+c2 = Clock(200)
+c4 = Clock(300)
+c3 = c1 + c2 + c4
+c1 += c2
 
-Roman.print_student_info()
-vladimir.print_student_info()
+print(c1.get_format_time())
+print(c2.get_format_time())
+print(c4.get_format_time())
+print(c3.get_format_time())
+
+if c1 == c2:
+    print("Время одинаковое")
+else:
+    print("Время разное")
+
+if c1 != c2:
+    print("Время разное")
+else:
+    print("Время одинаковое")
+
+c5 = c1 - c2
+print(f"c1 - c2 = {c5.get_format_time()}")
+
+c6 = c1 * c2
+print(f"c1 * c2 = {c6.get_format_time()}")
+
+c7 = c1 % c2
+print(f"c1 % c2 = {c7.get_format_time()}")
+
+print(f"c1 <= c2: {c1 <= c2}")
+print(f"c1 >= c2: {c1 >= c2}")

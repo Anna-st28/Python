@@ -1,54 +1,53 @@
-from abc import ABC
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        # if self.sec == other.sec:
+        #     return True
+        # return False
+        return self.sec == other.sec
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 
-class Human(ABC):
-    def __init__(self, surname, name, age):
-        self.surname = surname
-        self.name = name
-        self.age = age
+c1 = Clock(100)
+c2 = Clock(200)
+# c4 = Clock(300)
+# c3 = c1 + c2 + c4
+# c1 += c2
+print(c1.get_format_time())
+print(c2.get_format_time())
+# print(c4.get_format_time())
+# print(c3.get_format_time())
+# if c1 == c2:
+#     print("Время одинаковое")
+# else:
+#     print("Время разное")
 
-    def info(self):
-        return f"Фамилия: {self.surname}, Имя: {self.name}, Возраст: {self.age}"
-
-
-class Student(Human):
-    def __init__(self, surname, name, age, department, group, grade):
-        super().__init__(surname, name, age)
-        self.department = department
-        self.group = group
-        self.grade = grade
-
-    def info(self):
-        return f"{super().info()}, Факультет: {self.department}, Группа: {self.group}, Курс: {self.grade}"
-
-
-class Teacher(Human):
-    def __init__(self, surname, name, age, department, experience):
-        super().__init__(surname, name, age)
-        self.department = department
-        self.experience = experience
-
-    def info(self):
-        return f"{super().info()}, Кафедра: {self.department}, Стаж: {self.experience}"
-
-
-class Graduate(Student):
-    def __init__(self, surname, name, age, department, group, grade, thesis):
-        super().__init__(surname, name, age, department, group, grade)
-        self.thesis = thesis
-
-    def info(self):
-        return f"{super().info()}, Тема диплома: {self.thesis}"
-
-
-people = [
-    Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
-    Student("Загидулин", "Линар", 32, "РПО", "PD_011", 5),
-    Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
-    Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
-    Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
-    Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
-]
-
-for person in people:
-    print(person.info())
+if c1 != c2:
+    print("Время разное")
+else:
+    print("Время одинаковое")
