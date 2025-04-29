@@ -1,53 +1,109 @@
-class Clock:
-    __DAY = 86400
-
-    def __init__(self, sec: int):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
-
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
-
-    @staticmethod
-    def __get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __add__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.sec + other.sec)
-
-    def __eq__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        # if self.sec == other.sec:
-        #     return True
-        # return False
-        return self.sec == other.sec
-
-    def __ne__(self, other):
-        return not self.__eq__(other)
+import math
+from abc import ABC, abstractmethod
 
 
-c1 = Clock(100)
-c2 = Clock(200)
-# c4 = Clock(300)
-# c3 = c1 + c2 + c4
-# c1 += c2
-print(c1.get_format_time())
-print(c2.get_format_time())
-# print(c4.get_format_time())
-# print(c3.get_format_time())
-# if c1 == c2:
-#     print("Время одинаковое")
-# else:
-#     print("Время разное")
+class Shape(ABC):
+    def __init__(self, color):
+        self.color = color
 
-if c1 != c2:
-    print("Время разное")
-else:
-    print("Время одинаковое")
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+    @abstractmethod
+    def draw(self):
+        pass
+
+    @abstractmethod
+    def info(self):
+        pass
+
+
+class Square(Shape):
+    def __init__(self, side, color):
+        super().__init__(color)
+        self.side = side
+
+    def area(self):
+        return self.side ** 2
+
+    def perimeter(self):
+        return 4 * self.side
+
+    def draw(self):
+        print("***\n" * 3)
+
+    def info(self):
+        print("===Квадрат===")
+        print(f"Сторона: {self.side}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area()}")
+        print(f"Периметр: {self.perimeter()}")
+        self.draw()
+
+
+class Rectangle(Shape):
+    def __init__(self, length, width, color):
+        super().__init__(color)
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+    def draw(self):
+        print("*******\n" * 3)
+
+    def info(self):
+        print("===Квадрат===")
+        print(f"Длина: {self.length}")
+        print(f"Ширина: {self.width}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area()}")
+        print(f"Периметр: {self.perimeter()}")
+        self.draw()
+
+
+class Triangle(Shape):
+    def __init__(self, side1, side2, side3, color):
+        super().__init__(color)
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
+
+    def area(self):
+        s = (self.side1 + self.side2 + self.side3) / 2
+        return math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3))
+
+    def perimeter(self):
+        return self.side1 + self.side2 + self.side3
+
+    def draw(self):
+        print("     *\n    ***\n   *****\n  *******\n *********\n***********")
+
+    def info(self):
+        print("===Треугольник===")
+        print(f"Сторона 1: {self.side1}")
+        print(f"Сторона 2: {self.side2}")
+        print(f"Сторона 2: {self.side3}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area():.2f}")
+        print(f"Периметр: {self.perimeter():.1f}")
+        self.draw()
+
+
+square = Square(3, "red")
+rectangle = Rectangle(3, 7, "green")
+triangle = Triangle(11, 6, 6, "yellow")
+
+shapes = [square, rectangle, triangle]
+
+for shape in shapes:
+    shape.info()
