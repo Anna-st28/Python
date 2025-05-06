@@ -5908,24 +5908,19 @@ def gen_person():
         'tel': tel
     }
 
-    return person
+    return person, tel
 
 
-def write_json(person_dict):
+def write_json(person_dict, num):
     try:
-        data = json.load(open("persons.json"))  # [{'name': 'meckcda', 'tel': '2257386866'}, ...]
+        data = json.load(open("persons.json"))
     except FileNotFoundError:
-        data = []
+        data = {}
 
-    data.append(person_dict)
+    data[num] = person_dict
     with open('persons.json', 'w') as f:
         json.dump(data, f, indent=2)
 
 
 for i in range(5):
-    write_json(gen_person())
-
-# persons = []
-# for i in range(5):
-#     persons.append(gen_person())
-# print(persons)
+    write_json(gen_person()[0], gen_person()[1])
