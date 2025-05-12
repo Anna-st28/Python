@@ -1,109 +1,92 @@
-import math
-from abc import ABC, abstractmethod
+import json
 
 
-class Shape(ABC):
-    def __init__(self, color):
-        self.color = color
+class CountryCapital:
+    @staticmethod
+    def load(file_name):
+        try:
+            data = json.load(open(file_name, encoding="utf-8"))
+        except FileNotFoundError:
+            data = {}
+        finally:
+            return data
 
-    @abstractmethod
-    def area(self):
-        pass
+    @staticmethod
+    def add_country(file_name):
+        new_country = input("Введите название страны: ").lower()
+        new_capital = input("Введите название столицы: ").lower()
 
-    @abstractmethod
-    def perimeter(self):
-        pass
+        data = CountryCapital.load(file_name)
 
-    @abstractmethod
-    def draw(self):
-        pass
+        data[new_country] = new_capital
 
-    @abstractmethod
-    def info(self):
-        pass
+        with open(file_name, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
 
+    @staticmethod
+    def load_from_file(file_name):
+        with open(file_name, encoding="utf-8") as f:
+            print({k.title(): v.title() for k, v in json.load(f).items()})
 
-class Square(Shape):
-    def __init__(self, side, color):
-        super().__init__(color)
-        self.side = side
+    @staticmethod
+    def delete_country(file_name):
+        del_country = input("Введите название страны: ").lower()
 
-    def area(self):
-        return self.side ** 2
+        data = CountryCapital.load(file_name)
 
-    def perimeter(self):
-        return 4 * self.side
+        if del_country in data:
+            del data[del_country]
 
-    def draw(self):
-        print("***\n" * 3)
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        else:
+            print("Такой страны в базе нет")
 
-    def info(self):
-        print("===Квадрат===")
-        print(f"Сторона: {self.side}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter()}")
-        self.draw()
+    @staticmethod
+    def search_data(file_name):
+        country = input("Введите название страны: ").lower()
 
+        data = CountryCapital.load(file_name)
 
-class Rectangle(Shape):
-    def __init__(self, length, width, color):
-        super().__init__(color)
-        self.length = length
-        self.width = width
+        if country in data:
+            print(f"Страны {country.title()} столица {data[country].title()} есть в словаре")
+        else:
+            print(f"Страны {country.title()} нет в словаре")
 
-    def area(self):
-        return self.length * self.width
+    @staticmethod
+    def edit_data(file_name):
+        country = input("Введите страну для корректировки: ").lower()
+        new_capital = input("Введите новое название столицы: ").lower()
 
-    def perimeter(self):
-        return 2 * (self.length + self.width)
+        data = CountryCapital.load(file_name)
 
-    def draw(self):
-        print("*******\n" * 3)
+        if country in data:
+            data[country] = new_capital
 
-    def info(self):
-        print("===Квадрат===")
-        print(f"Длина: {self.length}")
-        print(f"Ширина: {self.width}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter()}")
-        self.draw()
-
-
-class Triangle(Shape):
-    def __init__(self, side1, side2, side3, color):
-        super().__init__(color)
-        self.side1 = side1
-        self.side2 = side2
-        self.side3 = side3
-
-    def area(self):
-        s = (self.side1 + self.side2 + self.side3) / 2
-        return math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3))
-
-    def perimeter(self):
-        return self.side1 + self.side2 + self.side3
-
-    def draw(self):
-        print("     *\n    ***\n   *****\n  *******\n *********\n***********")
-
-    def info(self):
-        print("===Треугольник===")
-        print(f"Сторона 1: {self.side1}")
-        print(f"Сторона 2: {self.side2}")
-        print(f"Сторона 2: {self.side3}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area():.2f}")
-        print(f"Периметр: {self.perimeter():.1f}")
-        self.draw()
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        else:
+            print("Такой страны в базе нет")
 
 
-square = Square(3, "red")
-rectangle = Rectangle(3, 7, "green")
-triangle = Triangle(11, 6, 6, "yellow")
+file = "list_capital.json"
+while True:
+    index = input("Выбор действия:\n1 - добавление данных\n2 - удаление данных\n3 - поиск данных\n"
+                  "4 - редактирование данных\n5 - просмотр данных\n6 - завершение работы\n"
+                  "Ввод: ")
+    if index == "1":
+        CountryCapital.add_country(file)
+    elif index == "2":
+        CountryCapital.delete_country(file)
+    elif index == "3":
+        CountryCapital.search_data(file)
+    elif index == "4":
+        CountryCapital.edit_data(file)
+    elif index == "5":
+        CountryCapital.load_from_file(file)
+    elif index == "6":
+        break
+    else:
+        print("Введен некорректный номер")
 
-shapes = [square, rectangle, triangle]
-
-for shape in shapes:
-    shape.info()
+    print("*" * 50)
