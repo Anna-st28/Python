@@ -6185,10 +6185,10 @@
 #     cur.execute("DROP TABLE users")
 
 #
-# import sqlite3
+import sqlite3
 
-# with sqlite3.connect("users.db") as con:
-#     cur = con.cursor()
+with sqlite3.connect("users.db") as con:
+    cur = con.cursor()
 # cur.execute("""
 # CREATE TABLE IF NOT EXISTS person(
 # id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -6222,7 +6222,7 @@
 
 
 # import sqlite3
-
+#
 # with sqlite3.connect("db_3.db") as con:
 #     cur = con.cursor()
 #     cur.execute("""
@@ -6230,18 +6230,18 @@
 #     FROM T1
 #     LIMIT 2, 5
 #     """)
-#
-#     # for res in cur:
-#     #     print(res)
-#
-#     # res = cur.fetchall()
-#     # print(res)
-#
-#     res2 = cur.fetchmany(2)
-#     print(res2)
-#
-#     res1 = cur.fetchone()
-#     print(res1)
+
+    # for res in cur:
+    #     print(res)
+
+    # res = cur.fetchall()
+    # print(res)
+
+    # res2 = cur.fetchmany(2)
+    # print(res2)
+    #
+    # res1 = cur.fetchone()
+    # print(res1)
 
 
 # lst = ['a', 'b', 'c']
