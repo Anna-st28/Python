@@ -1,0 +1,25 @@
+h1 { color: red; }
+h2 { color: orange; }
+h3 { color: green; }
+h4 { color: blue; }
+h5 { color: purple; }
+
+.one{
+    list-style-image: url(orange_marker.png);
+}
+
+.two{
+    list-style-image: url(red_marker.png);
+}
+
+.three{
+    list-style-image: url(green_marker.png);
+}
+
+.four{
+    list-style-image: url(blue_marker.png);
+}
+
+.five{
+    list-style-image: url(black_marker.png);
+}
