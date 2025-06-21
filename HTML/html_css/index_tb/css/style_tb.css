@@ -1,7 +1,28 @@
+table{
+			border: 1px 5px solid white; 
+			border-collapse: collapse;
+			width: 700px;
+			height: 50px;
+			margin: 2px auto;
+			box-shadow: 5px 5px 5px 5px silver;
+			background-color: white;
+		}
+		td{
+			border: 2px 2px solid white; 
+			padding: 20px;
+			box-shadow: inset 0px 3px 3px silver;}
+		th{
+			border: 2px 2px solid silver; 
+			padding: 20px;
+			box-shadow: inset 0px 3px 3px silver;
+			background-color: silver;}
+            
+
 body{
-    background-color: url(../img/pattern.png);
+    background-image: url(../img/pattern.png);
 }
 
-
-
+th{
+    background-image: url(../img/tablebg.jpg);
+}
 
