@@ -1,0 +1,16 @@
+td{
+    min-width: 200px;
+}
+
+.three{
+    vertical-align: top;
+}
+
+input[type="submit"] {
+    width: 550px;
+}
+
+textarea{
+    height: 200px;
+    width: 800px;
+}
