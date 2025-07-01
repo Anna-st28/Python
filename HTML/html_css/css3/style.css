@@ -1,0 +1,35 @@
+.animation{
+    border: 1px solid rebeccapurple;
+    background: orange;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    animation: anim 4s infinite;
+}
+
+@keyframes anim {
+    0% {
+        margin-left: 3px;
+        margin-top: 3px;
+        background: rebeccapurple;
+    }
+
+    30% {
+        margin-left: 3px;
+        margin-top: 250px;
+        background: orange;
+        height: 80px;
+    }
+/* 
+    60% {
+        margin-left: 300px;
+        margin-top: 250px;
+        background: orchid;
+    } */
+
+    100% {
+        margin-left: 3px;
+        margin-top: 3px;
+        background: rebeccapurple;
+    }
+}

@@ -1,0 +1,66 @@
+.shar{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background: rosybrown;
+    border-radius: 100%;
+    animation: share 3s linear infinite, shareleft 24s linear infinite alternate;
+}
+
+@keyframes share {
+    0% {
+        bottom: 100%;
+    }
+
+    25% {
+        transform: rotate(360deg);  
+        bottom: 10px; 
+        width: 50px; 
+        height: 50px;
+        background: orange;
+    }
+
+    30% {    
+        transform: rotate(360deg);  
+        bottom: 0px; 
+        width: 50px; 
+        height: 25px;
+        background: rgb(224, 35, 107);
+    }
+
+    35% {
+        transform: rotate(360deg);  
+        bottom: 0px; 
+        width: 50px; 
+        height: 50px;
+        background: rebeccapurple;
+    }
+
+    100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes shareleft {
+    0% {
+        left: 0%;
+        margin-top: 100px;
+    }
+
+    25% {
+        left: 25%;
+        margin-top: 50px;
+    }
+
+    50% {
+        left: 50%;
+        margin-top: 25px;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+
+
