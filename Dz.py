@@ -21,24 +21,24 @@ def write_csv(data):
 
 def get_data(html):
     soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all("section", class_="plugin-category")[2]
-    plugins = p1.find_all("h2", class_="plugin-card")
+    p1 = soup.find_all("section", class_="plugin-section")[2]
+    plugins = p1.find_all("li")
     for plugin in plugins:
         try:
-            name = plugin.find("h3", class_="plugin-link").text
+            name = plugin.find("h3", class_="entry-title").text
         except AttributeError:
             name = ""
-        url = plugin.find("h3", class_="plugin-link").find("a").get("href")
-        rating = plugin.find("span", class_="plugin-status active").text
+        url = plugin.find("h3", class_="entry-title").find("a").get("href")
+        rating = plugin.find("span", class_="rating-count").text
         replace_rating = refined(rating)
-        snippet = plugin.find("div", class_="plugin-card__description").text.strip()
+        snippet = plugin.find("div", class_="entry-excerpt").text.strip()
 
         data = {"name": name, "url": url, "rating": replace_rating, "snippet": snippet}
         write_csv(data)
 
 
 def main():
-    url = "https://lampa.nnslvp.io/plugins.html"
+    url = "https://ru.wordpress.org/plugins/"
     get_data(get_html(url))
 
 
