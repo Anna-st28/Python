@@ -107,6 +107,25 @@ body {
     text-decoration: none;
 }
 
+.oran__title{
+    color: rgb(255, 166, 43);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    align-items: center;
+    margin: 0 0 0 15px;
+}
+
+.br{
+    color: black;
+    position: left;
+    width: 67px;
+    height: 24px;
+    flex-direction: column;
+    margin: 10px 0 0 5px;
+} 
+
 /* choose */
 .choose {
     padding: 145px 0 100px;
@@ -169,25 +188,6 @@ body {
     letter-spacing: 0.2px;
     margin: 0;
 }
-
-.oran__title{
-    color: rgb(255, 166, 43);
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 24px;
-    align-items: center;
-    margin: 0 0 0 15px;
-}
-
-.br{
-    color: black;
-    position: left;
-    width: 67px;
-    height: 24px;
-    flex-direction: column;
-    margin: 10px 0 0 5px;
-} 
 
 /* team */
 .team {
@@ -435,5 +435,32 @@ button{
 
     br{
         display: none;
+    }
+}
+
+@media(max-width: 714px){
+    input, select{
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+    textarea{
+        margin-right: 0;
+    }
+
+    button, .cont button{
+        width: 100%;
+    }
+}
+
+@media(max-width: 454px){
+    .top__btn a{
+        display: block;
+        margin: 25px 40px;
+    }
+
+    .top h1{
+        font-size: 40px;
+        line-height: 57px;
     }
 }

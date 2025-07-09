@@ -1,14 +1,46 @@
+from bs4 import BeautifulSoup
 import requests
+import re
 import csv
-import json
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-data = response.json()
 
-with open('todos.csv', 'w', newline='') as file:
-    writer = csv.writer(file)
+def get_html(url):
+    r = requests.get(url)
+    return r.text
 
-    writer.writerow(['userId', 'id', 'title', 'completed'])
 
-    for item in data:
-        writer.writerow([item['userId'], item['id'], item['title'], item['completed']])
+def refined(s):
+    return re.sub(r"\D+", "", s)
+
+
+def write_csv(data):
+    with open('dz_plugins.csv', "a") as f:
+        writer = csv.writer(f, delimiter=",", lineterminator="\r")
+        writer.writerow([data["name"], data['url'], data['rating'], data['snippet']])
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    p1 = soup.find_all("section", class_="plugin-category")[2]
+    plugins = p1.find_all("h2", class_="plugin-card")
+    for plugin in plugins:
+        try:
+            name = plugin.find("h3", class_="plugin-link").text
+        except AttributeError:
+            name = ""
+        url = plugin.find("h3", class_="plugin-link").find("a").get("href")
+        rating = plugin.find("span", class_="plugin-status active").text
+        replace_rating = refined(rating)
+        snippet = plugin.find("div", class_="plugin-card__description").text.strip()
+
+        data = {"name": name, "url": url, "rating": replace_rating, "snippet": snippet}
+        write_csv(data)
+
+
+def main():
+    url = "https://lampa.nnslvp.io/plugins.html"
+    get_data(get_html(url))
+
+
+if __name__ == '__main__':
+    main()
