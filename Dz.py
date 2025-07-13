@@ -1,46 +1,40 @@
-from bs4 import BeautifulSoup
 import requests
-import re
-import csv
+from bs4 import BeautifulSoup
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+class Book:
+    def __init__(self, title, author, link):
+        self.title = title
+        self.author = author
+        self.link = link
+
+    def __str__(self):
+        return f"Название: {self.title}\nАвтор: {self.author}\nСсылка: {self.link}\n"
 
 
-def refined(s):
-    return re.sub(r"\D+", "", s)
-
-
-def write_csv(data):
-    with open('dz_plugins.csv', "a") as f:
-        writer = csv.writer(f, delimiter=",", lineterminator="\r")
-        writer.writerow([data["name"], data['url'], data['rating'], data['snippet']])
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all("section", class_="plugin-section")[2]
-    plugins = p1.find_all("li")
-    for plugin in plugins:
+def parse_books(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    books = []
+    for container in soup.find_all('div', class_='CollectionCard__content'):
         try:
-            name = plugin.find("h3", class_="entry-title").text
+            title = container.find('div', class_='CollectionCard__title').text.strip()
+            author = container.find('div', class_='CollectionCard__authors').text.strip()
+            link = 'https://www.litres.ru' + container.find('a', class_='CollectionCard__link')['href']
+            book = Book(title, author, link)
+            books.append(book)
         except AttributeError:
-            name = ""
-        url = plugin.find("h3", class_="entry-title").find("a").get("href")
-        rating = plugin.find("span", class_="rating-count").text
-        replace_rating = refined(rating)
-        snippet = plugin.find("div", class_="entry-excerpt").text.strip()
-
-        data = {"name": name, "url": url, "rating": replace_rating, "snippet": snippet}
-        write_csv(data)
+            print("Не удалось извлечь данные.")
+    return books
 
 
-def main():
-    url = "https://ru.wordpress.org/plugins/"
-    get_data(get_html(url))
+def save_to_txt(books, filename='books.txt'):
+    with open(filename, 'w', encoding='utf-8') as f:
+        for book in books:
+            f.write(str(book))
 
 
 if __name__ == '__main__':
-    main()
+    url = 'https://www.litres.ru/collections/top-100-luchshih-proizvedeniy/'
+    books = parse_books(url)
+    save_to_txt(books)

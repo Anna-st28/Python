@@ -27,12 +27,49 @@
  
 // alert(`Мы живем на планете ${planet}, она делает один оборот вокруг ${sun} за ${days}. Население нашей планеты составляет примерно ${people} человек`)
  
-let res = confirm("Знаете ли вы HTML?");
-console.log(res);
+// let res = confirm("Знаете ли вы HTML?");
+// console.log(res);
 
-if(res){
-    alert("Пора учить JavaScript");
-} else {
-    alert("Нужно выучить");
-}
+// if(res){
+//     alert("Пора учить JavaScript");
+// } else {
+//     alert("Нужно выучить");
+// }
 
+/* Типы данных 
+- number
+- string
+- boolean
+- null (object)
+- undefined
+
+- Object
+*/
+
+
+// let number = 13
+// console.log(number, typeof number);
+// console.log(number, typeof (number));
+
+// let a = 23.56
+// console.log(a, typeof (a));
+
+// let b = "Hello"
+// console.log(b, typeof (b));
+
+// let c = true
+// console.log(c, typeof (c));
+
+// let d = null;
+// console.log(d, typeof (d));
+
+// let e = undefined;
+// console.log(e, typeof (e));
+
+
+// let res = prompt("Ваше имя:" , "Значение по умолчанию");
+// console.log(res);
+
+let a = 12;
+let b = 8;
+console.log(a + b);
