@@ -1143,3 +1143,223 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // let fullDate = "Сегодня: " + d.getDate() + " " + mounth[d.getMonth()] + " " + d.getFullYear() + " год, " + day[d.getDay()];
 
 // document.writeln(fullDate);
+
+// setInterval(функция, интервал);
+
+// document.writeln("<input type='button' value='Start / Stop'>");
+// document.querySelector('input').addEventListener("click", startStop);
+
+// let act, run = false;
+// function startStop(){
+//     if (!run) {
+//         act = setInterval(setColor, 1000);
+//         run = true
+//     }else{
+//         clearInterval(act);
+//         run = false;
+//     }
+// }
+
+// function setColor(){
+//     let x =  document.body;
+//     x.style.background = x.style.background == "yellow"? "orange" : "yellow";
+// }
+
+// document.writeln("<div id='text'> Здесь бует отображаться текущее время</div>");
+
+// window.addEventListener('load', () => setInterval(time, 1000));
+
+// function time(){
+//     let d = new Date();
+//     let hour = d.getHours();
+//     let min = d.getMinutes();
+//     let sec = d.getSeconds();
+
+//     if(min<10){
+//         min = "0" + min;
+//     }
+//     if(sec<10){
+//         sec = "0" + sec;
+//     }
+
+//     let times = hour + ":" + min + ":" + sec;
+//     document.querySelector("#text").innerHTML = times;
+// }
+
+// let imgTime = ['c0.gif', 'c1.gif', 'c2.gif', 'c3.gif', 'c4.gif', 'c5.gif','c6.gif', 'c7.gif', 'c8.gif', 'c9.gif',];
+
+// let t = document.querySelectorAll("#clock img");
+
+// clock();
+
+// function clock(){
+//     let time = new Date();
+//     let hours = time.getHours();
+//     let mins = time.getMinutes();
+//     let seconds = time.getSeconds();
+
+//     console.log(hours, mins, seconds);
+//     setTimeout(clock, 1000);
+// }
+
+// function getImg(h, m, s){
+//     t[0].src = imgTime[parseInt(h / 10)];
+//     t[1].src = imgTime[h % 10];
+
+//     t[3].src = imgTime[Math.floor(m / 10)];
+//     t[4].src = imgTime[m % 10];
+
+//     t[6].src = imgTime[Math.floor(s / 10)];
+//     t[7].src = imgTime[s / 10];
+// }
+
+// document.writeln(`
+//     <input type='text' size='4' id='timer' value='0.0'>
+//     <input type='button' value='Start/Stop'>
+//     <input type='button' value='Clear'>
+// `);
+
+// document.querySelector("input[value='Start/Stop']").addEventListener('click', startTimer);
+
+// document.querySelector("input[value='Clear']").addEventListener('click', resetTimer);
+
+// let id, flag;
+// function startTimer(){
+//     if(!flag){
+//         id = setInterval(incTimer, 100);
+//     } else {
+//         clearInterval(id);
+//     }
+//     flag = !flag
+// }
+
+// let tsec = 0;
+// function incTimer(){
+//     tsec++;
+//     let t = tsec/10.0
+//     if(tsec % 10 == 0){
+//         t += ".0";
+//     }
+//     document.getElementById("timer").value = t;
+// }
+
+// function resetTimer(){
+//     document.getElementById("timer").value = "0.0";
+//     tsec = 0;
+// }
+
+// let a = document.querySelector("#cl");
+// a.addEventListener("click", myMove);
+
+// function myMove(){
+//     let elem = document.getElementById("animate");
+//     let pos = 50;
+//     setInterval(frame, 5);
+
+//     function frame(){
+//         // a.style.visibility="hidden";
+//         if(pos == 350){
+//             // a.style.visibility="visible";
+//             a.addEventListener("click", myMove);
+//             clearInterval(id);
+//         } else {
+//             a.removeEventListener("click", myMove);
+//             pos++;
+//             elem.style.top = pos + "px";
+//             elem.style.left = pos + "px";
+//         }
+//     }
+
+// }
+
+// document.image.border = 1; 
+// document.writeln("<br>Ширина изображения: " + document.image.width);
+// document.writeln("<br>Высота изображения: " + document.image.height);
+
+// document.image.src='blue_star.png';
+
+// let array = new Array('2.jpg', '3.jpg', '4.jpg');
+// document.writeln("<input type='button' value='<'name='left'>")
+
+// document.writeln("<img src='" + array[0] + "'>")
+
+// document.writeln("<input type='button' value='>'name='right'>")
+
+// document.getElementsByName('right')[0].addEventListener('click', arrowRight)
+// document.getElementsByName('left')[0].addEventListener('click', arrowLeft);
+
+// let image = document.querySelector("img");
+// let i = 0;
+
+// function arrowRight(){
+//     i++;
+//     if(i == array.length){
+//         i = 0;
+//     }
+//     image.src = array[i];
+// }
+// function arrowLeft(){
+//     i--;
+//     if(i < 0){
+//         i = array.length - 1;
+//     }
+//     image.src = array[i];
+// }
+
+// let a = 5;
+// let b = 10;
+// let c;
+
+// console.log("a =", a)
+// console.log("b =", b)
+
+// c = a;
+// a = b;
+// b = c;
+
+// console.log("a =", a)
+// console.log("b =", b)
+
+// document.writeln("<input type='number' min='1' max='3'>");
+// document.writeln("<input type='button' class='btn' value='Кнопка'>");
+
+// let btn = document.querySelector("#btn")
+// console,log(btn);
+
+// btn.addEventListener("click", function(){
+// let el = document.querySelector("input").value;
+// console,log(el);
+// })
+
+document.addEventListener('DOMContentLoaded', function() {
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+    const swap = document.getElementById('swap');
+    const NumberInput = document.getElementById('Number');
+
+    swap.addEventListener('click', function(){
+        const Number = parseInt(NumberInput.value);
+
+        if (Number >= 1 && Number <= 3) {
+            let tempSrc = img1.src;
+
+            if (Number == 1) {
+                img1.src = img2.src;
+                img2.src = img3.src;
+                img3.src = tempSrc;
+            } else if (Number == 2) {
+                tempSrc = img2.src;
+                img2.src = img1.src;
+                img1.src = img3.src;
+                img3.src = tempSrc;
+            } else if(Number == 3){
+                tempSrc = img3.src;
+                img3.src = img2.src;
+                img2.src = img1.src;
+                img1.src = tempSrc;
+            }
+        } else {
+        }
+    });
+});
