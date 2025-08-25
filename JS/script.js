@@ -1331,35 +1331,35 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // console,log(el);
 // })
 
-document.addEventListener('DOMContentLoaded', function() {
-    const img1 = document.getElementById('img1');
-    const img2 = document.getElementById('img2');
-    const img3 = document.getElementById('img3');
-    const swap = document.getElementById('swap');
-    const NumberInput = document.getElementById('Number');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const img1 = document.getElementById('img1');
+//     const img2 = document.getElementById('img2');
+//     const img3 = document.getElementById('img3');
+//     const swap = document.getElementById('swap');
+//     const NumberInput = document.getElementById('Number');
 
-    swap.addEventListener('click', function(){
-        const Number = parseInt(NumberInput.value);
+//     swap.addEventListener('click', function(){
+//         const Number = parseInt(NumberInput.value);
 
-        if (Number >= 1 && Number <= 3) {
-            let tempSrc = img1.src;
+//         if (Number >= 1 && Number <= 3) {
+//             let tempSrc = img1.src;
 
-            if (Number == 1) {
-                img1.src = img2.src;
-                img2.src = img3.src;
-                img3.src = tempSrc;
-            } else if (Number == 2) {
-                tempSrc = img2.src;
-                img2.src = img1.src;
-                img1.src = img3.src;
-                img3.src = tempSrc;
-            } else if(Number == 3){
-                tempSrc = img3.src;
-                img3.src = img2.src;
-                img2.src = img1.src;
-                img1.src = tempSrc;
-            }
-        } else {
-        }
-    });
-});
+//             if (Number == 1) {
+//                 img1.src = img2.src;
+//                 img2.src = img3.src;
+//                 img3.src = tempSrc;
+//             } else if (Number == 2) {
+//                 tempSrc = img2.src;
+//                 img2.src = img1.src;
+//                 img1.src = img3.src;
+//                 img3.src = tempSrc;
+//             } else if(Number == 3){
+//                 tempSrc = img3.src;
+//                 img3.src = img2.src;
+//                 img2.src = img1.src;
+//                 img1.src = tempSrc;
+//             }
+//         } else {
+//         }
+//     });
+// });
