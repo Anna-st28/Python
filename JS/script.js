@@ -1363,3 +1363,105 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //         }
 //     });
 // });
+
+
+// document.form1.style.background = "silver";
+// document.forms[0].style.padding = "16px";
+// document.forms['form1'].style.margin = "20px";
+// document.forms.form1.style.border = "2px dotted gray";
+
+// document.form1.name1.style.color = "blue";
+// document.form1.['name1'].style.background = "aqua";
+
+// let but = document.querySelector("button");
+// let txt = document.querySelector("#text1");
+
+// but.addEventListener("click", content);
+
+// function content(){
+//     // alert(txt.value);
+//     console.log(txt.value);
+// }
+
+// let input = document.querySelectorAll('input');
+// let form1 = document.forms.form1;
+
+// console.log(input.length);
+// console.log(form1.length);
+
+// for(let i=0; i < form1.length; i++){
+//     input[i].addEventListener("click", checkAll);
+// }
+
+// let num;
+// function checkAll(){
+//     num = 0;
+//     for(let i=0; i < form1.length; i++){
+//         if(input[i].checked && input[i].tupe == 'checkbox'){
+//             num++;
+//         }
+//     }
+//     if(num == 3){
+//         for(let i=0; i < form1.length; i++){
+//             if(!input[i].checked && input[i].tupe == 'checkbox'){
+//                 input[i].disabled = true;
+//             }
+//         }
+//     } else {
+//         for(let i=0; i < form1.length; i++){
+//             input[i].disabled = false;
+//         }
+//     }
+//     console.log(num);
+
+// }
+
+// let input = document.querySelectorAll('input[type="checkbox"]');
+// let form1 = document.forms.form1;
+
+// // console.log(input.length);
+// // console.log(form1.length);
+
+// for(let i=0; i < input.length; i++){
+//     input[i].addEventListener("click", checkAll);
+// }
+
+// let num;
+// function checkAll(){
+//     num = 0;
+//     for(let i=0; i < input.length; i++){
+//         if(input[i].checked){
+//             num++;
+//         }
+//     }
+//     if(num == 3){
+//         for(let i=0; i < input.length; i++){
+//             if(!input[i].checked){
+//                 input[i].disabled = true;
+//             }
+//         }
+//     } else {
+//         for(let i=0; i < input.length; i++){
+//             input[i].disabled = false;
+//         }
+//     }
+//     console.log(num);
+
+// }
+
+let choose = document.querySelector('input[type="button"]');
+
+choose.addEventListener("click", chooseColor);
+
+function chooseColor(){
+    let f = document.form3.radio2;
+
+    // console.log(f.length);
+
+    // for(let i = 0; i < f.length; i++){
+    //     if(f[i].checked){
+    //         document.body.style.background = f[i].value;
+    //     }
+    // }
+    document.body.style.background = f.value;
+}
