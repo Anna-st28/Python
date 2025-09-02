@@ -1449,19 +1449,202 @@ false => 0, 0.0, "", false, null, undefined, NaN
 
 // }
 
-let choose = document.querySelector('input[type="button"]');
+// let choose = document.querySelector('input[type="button"]');
 
-choose.addEventListener("click", chooseColor);
+// choose.addEventListener("click", chooseColor);
 
-function chooseColor(){
-    let f = document.form3.radio2;
+// function chooseColor(){
+//     let f = document.form3.radio2;
 
-    // console.log(f.length);
+//     // console.log(f.length);
 
-    // for(let i = 0; i < f.length; i++){
-    //     if(f[i].checked){
-    //         document.body.style.background = f[i].value;
-    //     }
-    // }
-    document.body.style.background = f.value;
-}
+//     // for(let i = 0; i < f.length; i++){
+//     //     if(f[i].checked){
+//     //         document.body.style.background = f[i].value;
+//     //     }
+//     // }
+//     document.body.style.background = f.value;
+// }
+
+// Свойства select:
+/*
+select.options - коллекция из подэлементов <option> (массив)
+select.value - значение выбранного в данный момент <option>
+select.selectedIndex - номер выбранного <option> (индекс)
+*/
+
+// let city = document.querySelector("#city");
+
+// city.addEventListener("change", setImage);
+
+// function setImage(){
+//     let cities = city.selectedIndex;
+//     // console.log(cities); // (индекс)
+//     let options = city.options;
+//     // console.log(options); // (массив)
+//     let code = city.value;
+//     // console.log(code);
+
+//     let div = document.querySelector("#image");
+//     div.innerHTML = "<img src='img/"+ code +".png'>"
+// }
+
+// let gas = document.querySelectorAll(".petrol");
+
+// for(let i=0; i < gas.length; i++){
+//     gas[i].addEventListener("click", function(){
+//         let gallons = document.querySelector(".gallons").value;
+//         let amount = gas[i].getAttribute("data-price");
+//         let res = gallons * amount;
+//         let sum = document.querySelector(".sum");
+//         sum.innerHTML = res;
+//     })
+// }
+
+// let reg = document.querySelector("register");
+
+// reg.addEventListener("submit", function(){
+//     let login = reg.login.value;
+//     let psd1 = reg.password1.value;
+//     let psd2 = reg.password2.value;
+
+//     if(!(login && psd1 && psd2)){
+//         alert("Все поля далжны быть заполнены");
+//     }
+//     if(psd1 != psd2){
+//         alert("Пароли не совпадают");
+//     }
+//     if(psd1.lenght < 6){
+//         alert("Слишком короткий пароль");
+//     }
+// })
+
+/*
+search() - возвращает позицию, на которой регулярное выражение совпадает с вызывающей строкой. Возвращает -1, если совпадение не найдено
+
+match() - получить все совпадения с регулярным выражением
+
+replace() - поиск и замена
+
+split() - делит строку на массив, разбивая ее по указанной подстроке
+
+test() - выполняет поиск совпадения регулярного выражения со строкой. 
+Возвращает true или false
+*/
+
+// let regexp = new RegExp("шаблон");
+// let regexp1 = /шаблон/;
+// let regexp2 = /шаблон/gmi;
+
+// let str = "Я ищу совпадения в 2025 году.";
+// let exp = /ищу/g;
+// document.writeln(str + "<br>");
+// document.writeln(str.search(exp) + "<br>");
+// document.writeln(str.match(exp) + "<br>");
+// document.writeln(exp.test(str) + "<br>");
+
+// [...] - искать один из заданных символов, только один раз
+// let exp = /[0256]/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/* Флаги
+g (global) - глобальный поиск
+i (ignoreCase) - регистронезависимый поиск
+m (multiline) - многострочный поиск
+*/
+
+// let exp = /[я]/gi;
+// document.writeln(str.match(exp) + "<br>");
+
+// let exp = /[0-9]/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/* Диапазоны
+[0-9] - одна любая цифра ([3-7])
+[A-Z] - заглавные буквы
+[a-z] - строчные буквы
+[A-Za-z]
+[А-ЯЁ] - заглавные буквы
+[а-яё] - строчные буквы
+[А-яЁё]
+*/
+
+// let exp = /[А-яЁё]/g;
+// document.writeln(str.match(exp) + "<br>");
+
+// [^abc] - исключающий диапазон, ни один из указанных символов
+// let exp = /[^0-9]/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/*
+{3} -количество символов идущих подряд
+{1, } - от 1 до любого количества посторений
+{2,5} - от 2 до 5 повторений
+*/
+
+// let exp = /[0-9]{2,3}/g;
+// document.writeln(str.match(exp) + "<br>");
+
+// let html = `
+//     <table>
+//         <tr>
+//             <td bgcolor="#CCC">
+//                 <img src="222.png">
+//             </td>
+//             <td bgcolor="#003355">
+//                 <img src="1f3.png">
+//             </td>
+//             <td bgcolor="#00ccdd">
+//                 <img src="FFF.png">
+//             </td>
+//         </tr>
+//     </table>                               
+// `;
+
+// let reg = /#([0-9a-f]{3}){1,2}/gi;
+// document.writeln(html.match(reg) + "<br>");
+
+/*
+\d (digit) - любая цифра
+\s (space) - пробельный символ, включая табуляцию и перевод строки
+\w (word) - любая цифра, буква (только английский, регистронезависимый) или символ подчеркивания
+*/
+
+// let exp = /\s\d/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/*
+\D (digit) - все кроме цифр
+\S (space) - не пробельный символ, включая табуляцию и перевод строки
+\W (word) - все кроме цифр, букв или символов подчеркивания
+*/
+
+// let exp = /\W/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/*
+^ - начало строки (перед последовательностью ничего не должно быть)
+$ - конец строки (после последовательности ничего не должно быть))
+*/
+
+// str = "909"
+// let exp = /^\d{3}/g;
+// document.writeln(str.match(exp) + "<br>");
+
+// точка - один любой символ
+
+// let exp = /\d.\d/g;
+// document.writeln(str.match(exp) + "<br>");
+
+/*
++ - от 1 до любого кол-ва повторений {1,}
+* - от 0 до любого кол-ва повторений {0,}
+? - от 0 до 1 повторения {0,1}
+*/
+
+// let exp = /\d+/g;
+// document.writeln(str.match(exp) + "<br>");
+
+let str = "   текст   ";
+str = str.replace(/^\s+|\s+$/g, "");
+alert(">" + str + "<");
