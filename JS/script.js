@@ -1645,6 +1645,289 @@ $ - конец строки (после последовательности н�
 // let exp = /\d+/g;
 // document.writeln(str.match(exp) + "<br>");
 
-let str = "   текст   ";
-str = str.replace(/^\s+|\s+$/g, "");
-alert(">" + str + "<");
+// let str = "   текст   ";
+// str = str.replace(/^\s+|\s+$/g, "");
+// alert(">" + str + "<");
+
+// let car = new Object();
+// let car1 = {};
+
+// let car = new Object();
+// car["type"] = "BMW";
+// car["color"] = "white";
+// document.writeln(car["type"] + " " + car["color"]);
+
+// let car = new Object();
+// car.type = "BMW";
+// car.color = "white";
+// document.writeln(carl.type + " " + car.color);
+// console.log(car);
+
+// let menu1 = {};
+// menu1.width = 300;
+// menu1.height = 200;
+// menu1.title = "Menu";
+// document.writeln(menu1.title + ": " + menu1.width + " x " + menu1.height)
+// console.log(menu1);
+
+// let menu = {
+//     width: 300,
+//     height: 200,
+//     title: "Menu",
+// };
+
+// // delete(menu.width);
+// delete menu.width;
+
+// // document.writeln(menu.title + ": " + menu.width + " x " + menu.height + "<br>")
+// let count = 0;
+// menu.age = 25;
+// for(let i in menu){
+//     document.writeln(i + ": " + menu[i] + "<br>");
+//     count++;
+// }
+
+// console.log(menu);
+// console.log("count:", count);
+
+// // document.writeln("Имена ключей: " + Object.keys(menu));
+// // document.writeln("<br>Всего ключей: " + Object.keys(menu).length);
+
+// Object.keys(menu).forEach(function(key){
+//     document.writeln("<br>" + key + ": " + menu[key])
+// })
+
+// Деструктуризация
+
+// let user = {
+//     login: {
+//         firstName: "Kate",
+//         lastName: "Pavlova"
+//     },
+//     password: "qwerty",
+//     role: "quest"
+// }
+
+// let {login: {firstName, lastName}, password, role} = user;
+// document.writeln(firstName + " " + password + " " + role);
+
+// let number = [3, 5, 6];
+// // let [a, b, c] = number;
+// // document.writeln(a + " " + b + " " + c);
+// let [, , c] = number;
+// document.writeln(c);
+
+// let pers = {
+//     name: "Игорь",
+//     colors: [
+//         "красный",
+//         "белый",
+//         "синий",
+//         "черный"
+//     ],
+//     brand: "Bentley",
+//     start: function(){
+//         let color = Math.floor(Math.random() * 4);
+//         document.writeln(this.name + " выиграл " + this.color[color] + " " + brand);
+//     }
+// }
+
+// pers.start();
+
+// let form = document.form1;
+// form.addEventListener("submit", event => {
+//     event.preventDefault();
+
+//     let title = form.title.value;
+//     let text = form.text.value;
+//     let description = form.description.value;
+
+//     saveForm({title, text, description});
+// });
+
+
+// function saveForm(obj){
+//     let formData = {
+//         date: new Date().toLocaleDateString(),
+//         ...obj
+//     }
+//     console.log("FormData:", formData);
+// }
+
+// function saveForm(obj){
+//     let formData = {
+//         date: new Date().toLocaleDateString(),
+//         title: obj.title,
+//         text: obj.text,
+//         description: obj.description
+//     }
+//     console.log("FormData:", formData);
+// }
+
+// class User {
+
+//     constructor(name){
+//         this.name = name;
+//     }
+
+//     sayHi(){
+//         document.writeln("Hello, " + this.name + "!");
+//     }
+// }
+
+// let user = new User("Igor");
+// user.sayHi();
+
+// class User{
+
+//     constructor(login){
+//         this.login = login;
+//     }
+
+//     get login(){
+//         return this._login;
+//     }
+
+//     set login(value){
+//         if(value.length < 6){
+//             alert("Логин слишком короткий");
+//             return;
+//         }
+//         this._login = value;
+//     }
+// }
+
+// let user = new User("administrator");
+// alert(user.login);
+// user.login = "admin_admin";
+
+// class Person{
+//     constructor(firstName, lastName){
+//         this._firstName = firstName;
+//         this._lastName = lastName;
+//     }
+
+//     get fullName(){
+//         return this._firstName + " " + this._lastName
+//     }
+
+//     set fullName(value){
+//         [this._firstName, this._lastName] = value.split(/\s+/g);
+//     }
+// }
+
+// let people = new Person("John", "Dou");
+// document.writeln(people.fullName + "<br>");
+// people.fullName = "Anna Petrova";
+// document.writeln(people.fullName + "<br>");
+
+// class Animal{
+//     static count = 0;
+
+//     constructor(name){
+//         this.speed = 0;
+//         this.name = name;
+//         Animal.count++;
+//     }
+
+//     static counter(){
+//         return Animal.count;
+//     }
+
+//     run(speed){
+//         this.speed = speed;
+//         document.writeln(`${this.name} бежит со скоростью ${this.speed} км/ч.<br>`);
+//     }
+
+//     stop(){
+//         this.speed = 0;
+//         document.writeln(`${this.name} стоит.<br>`);
+//     }
+// }
+
+// class Rabbit extends Animal{
+
+//     constructor(name, earLength){
+//         super(name);
+//         this.earLength = earLength;
+//     }
+
+//     hide(){
+//         document.writeln(`${this.name} прячется!<br>`);
+//     }
+
+//     stop(){
+//         super.stop();
+//         this.hide();
+//     }
+// }
+
+// let animal = new Animal("Мой питомец");
+// animal.run(80);
+// animal.stop();
+
+// document.writeln("<br>");
+
+// let rabbit = new Rabbit("Белый кролик" , 10);
+// rabbit.run(5);
+// rabbit.hide();
+// rabbit.stop();
+// document.writeln(rabbit.name + "<br>");
+// document.writeln(rabbit.earLength + "<br>");
+
+// let animal2 = new Animal("Мой питомец 2");
+// let animal3 = new Animal("Мой питомец 3");
+// let animal4 = new Animal("Мой питомец 4");
+
+// document.writeln(Animal.counter());
+
+class Header{
+    constructor(img, h1, h2){
+        this.src = img;
+        this.h1 = h1;
+        this.h2 = h2;
+        this.out = "";
+    }
+
+    render(id){
+        this.out= `
+            <img src="${this.src}" alt="">
+            <h1>${this.h1}</h1>
+            <h2>${this.h2}</h2>
+        `;
+
+        document.querySelector(`#${id}`).innerHTML = this.out;
+    }
+}
+
+class HeaderExt extends Header{
+    constructor(img, h1, h2, tel){
+        super(img, h1, h2)
+        this.tel = tel;
+    }
+
+    render(id){
+        super.render(id);
+        this.out += `
+            <h3>${this.tel}</h3>
+        `;
+
+        document.querySelector(`#${id}`).innerHTML = this.out;
+    }
+}
+
+let img = "https://img.icons8.com/?size=80&id=vkp1R61cszcp&format=png";
+
+let header = new Header(img, "Заголовок", "Описание");
+header.render("header");
+
+let img2 = "https://img.icons8.com/?size=80&id=FbzG2nGn0raD&format=png";
+
+let header2 = new Header(img2, "Второй заголовок", "Другое описание");
+header2.render("header2");
+
+let img3 = "https://img.icons8.com/?size=80&id=108638&format=png";
+
+let header3 = new HeaderExt(img3, "Заголовок в наследнике", "Описание в классе", 
+"+7 999 123 45 67");
+header3.render("header-ext");
