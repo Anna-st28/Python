@@ -1881,53 +1881,104 @@ $ - конец строки (после последовательности н�
 
 // document.writeln(Animal.counter());
 
-class Header{
-    constructor(img, h1, h2){
-        this.src = img;
-        this.h1 = h1;
-        this.h2 = h2;
-        this.out = "";
-    }
+// class Header{
+//     constructor(img, h1, h2){
+//         this.src = img;
+//         this.h1 = h1;
+//         this.h2 = h2;
+//         this.out = "";
+//     }
 
-    render(id){
-        this.out= `
-            <img src="${this.src}" alt="">
-            <h1>${this.h1}</h1>
-            <h2>${this.h2}</h2>
-        `;
+//     get tel(){
+//         return this._tel;
+//     }
 
-        document.querySelector(`#${id}`).innerHTML = this.out;
+//     set tel(t){
+//         let reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+//         if(reg.test(t)){
+//             this._tel = t;
+//         } else {
+//             alert("Некорректный номер телефона");
+//             return;
+//         }
+//     }
+
+//     render(id){
+//         this.out= `
+//             <img src="${this.src}" alt="">
+//             <h1>${this.h1}</h1>
+//             <h2>${this.h2}</h2>
+//         `;
+
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+// class HeaderExt extends Header{
+//     constructor(img, h1, h2, tel){
+//         super(img, h1, h2)
+//         this.tel = tel;
+//     }
+
+//     render(id){
+//         super.render(id);
+//         this.out += `
+//             <h3>${this.tel}</h3>
+//         `;
+
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+// let img = "https://img.icons8.com/?size=80&id=vkp1R61cszcp&format=png";
+
+// let header = new Header(img, "Заголовок", "Описание");
+// header.render("header");
+
+// let img2 = "https://img.icons8.com/?size=80&id=FbzG2nGn0raD&format=png";
+
+// let header2 = new Header(img2, "Второй заголовок", "Другое описание");
+// header2.render("header2");
+
+// let img3 = "https://img.icons8.com/?size=80&id=108638&format=png";
+
+// let header3 = new HeaderExt(img3, "Заголовок в наследнике", "Описание в классе", 
+// "+7 999 123 45 67");
+// header3.render("header-ext");
+
+// // header3.tel = "Hello";
+// // header3.tel = "+7 884 765 39 03";
+
+// header3.render("header-ext");
+
+// let info = '{"first_name":"Ivan","age":36,"mathe":{"name":"Olga"},"children":["Kate","Igor","Misha"],"married":true,"dog":null}';
+
+// let person = JSON.parse(info);
+// console.log(person);
+
+// person.first_name = "Petr";
+
+// delete(person.age);
+
+// person.work = "programmer";
+
+// // delete(person.children[1]);
+// person .children.splice(1,1);
+// person .children.push("Ira");
+
+// for(let i in person){
+//     document.writeln(i + ": " + person[i] + "<br>");
+// }
+
+// let personString = JSON.stringify(person);
+// console.log(personString);
+
+let request = new XMLHttpRequest();
+request.open("GET", "data.txt");  // (method, url, async, login, password)
+
+request.send();
+request.onreadystatechange = function(){
+    if((request.readyState == 4) && (request.status == 200)){
+        document.writeln(request.response);
     }
 }
-
-class HeaderExt extends Header{
-    constructor(img, h1, h2, tel){
-        super(img, h1, h2)
-        this.tel = tel;
-    }
-
-    render(id){
-        super.render(id);
-        this.out += `
-            <h3>${this.tel}</h3>
-        `;
-
-        document.querySelector(`#${id}`).innerHTML = this.out;
-    }
-}
-
-let img = "https://img.icons8.com/?size=80&id=vkp1R61cszcp&format=png";
-
-let header = new Header(img, "Заголовок", "Описание");
-header.render("header");
-
-let img2 = "https://img.icons8.com/?size=80&id=FbzG2nGn0raD&format=png";
-
-let header2 = new Header(img2, "Второй заголовок", "Другое описание");
-header2.render("header2");
-
-let img3 = "https://img.icons8.com/?size=80&id=108638&format=png";
-
-let header3 = new HeaderExt(img3, "Заголовок в наследнике", "Описание в классе", 
-"+7 999 123 45 67");
-header3.render("header-ext");
