@@ -1973,12 +1973,12 @@ $ - конец строки (после последовательности н�
 // let personString = JSON.stringify(person);
 // console.log(personString);
 
-let request = new XMLHttpRequest();
-request.open("GET", "data.txt");  // (method, url, async, login, password)
+// let request = new XMLHttpRequest();
+// request.open("GET", "data.txt");  // (method, url, async, login, password)
 
-request.send();
-request.onreadystatechange = function(){
-    if((request.readyState == 4) && (request.status == 200)){
-        document.writeln(request.response);
-    }
-}
+// request.send();
+// request.onreadystatechange = function(){
+//     if((request.readyState == 4) && (request.status == 200)){
+//         document.writeln(request.response);
+//     }
+// }
