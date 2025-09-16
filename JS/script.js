@@ -1996,7 +1996,7 @@ $ - конец строки (после последовательности н�
 
 // outer();
 // console.log("a", a);
- 
+
 
 // function createCalc(n){
 //     return function(){
@@ -2107,64 +2107,134 @@ $ - конец строки (после последовательности н�
 
 // Click -> Server -> Datebase -> Server -> Client
 
-console.log("Клиент: хочу получить список пользователей");
-console.log("...");
- 
-let promise = new Promise(function (resolve, reject) {
-    setTimeout(function () {
-        console.log("Сервер: запрашиваю список пользователей в БД");
-        console.log("...");
-        resolve();
-    }, 1000);
-});
- 
-// promise.then(function(){
-//     setTimeout(function(){
-//         console.log("БД: формирую список пользователей");
+// console.log("Клиент: хочу получить список пользователей");
+// console.log("...");
+
+// let promise = new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//         console.log("Сервер: запрашиваю список пользователей в БД");
 //         console.log("...");
-//     }, 500);
+//         resolve();
+//     }, 1000);
+// });
+
+// // promise.then(function(){
+// //     setTimeout(function(){
+// //         console.log("БД: формирую список пользователей");
+// //         console.log("...");
+// //     }, 500);
+// // })
+// promise.then(function () {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             let users = [
+//                 {uid: "id1", name: "Igor"},
+//                 {uid: "id2", name: "Irina"},
+//             ]
+//             // reject("База данных не смогла получить список пользователей")
+//             console.log("БД: формирую список пользователей", users);
+//             console.log("...");
+//             resolve(users);
+//         }, 500);
+//     })
 // })
-promise.then(function () {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            let users = [
-                {uid: "id1", name: "Igor"},
-                {uid: "id2", name: "Irina"},
-            ]
-            // reject("База данных не смогла получить список пользователей")
-            console.log("БД: формирую список пользователей", users);
-            console.log("...");
-            resolve(users);
-        }, 500);
+// .then(function (dbUsers) {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             console.log("Сервер: трансформирую данные для клиента");
+//             console.log("...");
+//             let users = dbUsers.map(function(user){
+//                 return {
+//                     id: user.uid,
+//                     firstName: user.name,
+//                     timestamp: Date.now()
+//                 }
+//             })
+//             resolve(users)
+//         }, 500);
+//     })
+// })
+// .then(function (users) {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             console.log("Клиент: получил данные и отображаю их", users);
+//             resolve()
+//         }, 1000);
+//     })
+// })
+// .catch(function(error){
+//     console.log(error);    
+// })
+// .finally(function(){
+//     console.log("Finally");    
+// });
+
+// let test = ms => {
+//     return new Promise(resolve => {
+//         setTimeout(() => resolve(), ms);
+//     })
+// }
+
+// test(1000).then(() => console.log('1000 ms'));
+// test(2000).then(() => console.log('2000 ms'));
+
+// Promise.all([test(1000), test(2000)]).then(() => {
+//     console.log("all");
+// });
+
+// Promise.race([test(1000), test(2000)]).then(() => {
+//     console.log("race");
+// });
+
+
+// let test = ms => {
+//     return new Promise(resolve => {
+//         setTimeout(() => resolve(), ms);
+//     })
+// }
+
+// let p1 = test(1000).then(() => ({name: '1000 ms'}));
+// let p2 = test(2000).then(() => ({name: '2000 ms'}));
+
+// Promise.all([p1, p2]).then((data) => {
+//     console.log("all"), data;
+// });
+
+// Promise.race([p1, p2]).then((data) => {
+//     console.log("race", data);
+// });
+
+
+// fetch('https://jsonplaceholder.typicode.com/todos')
+//       .then(response => response.json())
+//       .then(json => console.log(json))
+
+
+// document.querySelector("#load").addEventListener("click", loadUsers);
+
+// function loadUsers(){
+//     let url = "https://jsonplaceholder.typicode.com/users";
+//     fetch(url)
+//         .then(function (response){
+//             return response.json()
+//         })
+//         .then(function (data){
+//             let ul = document.querySelector("#list");
+//             let html = data.map(function(item){
+//                 return "<li>" + item.id + " " + item.name + " " + item.email + "</li>";
+//             })
+//             ul.insertAdjacentHTML("afterbegin", html.join(" "));
+//         });
+// }
+
+document.querySelector("#load").addEventListener("click", loadUsers);
+
+async function loadUsers() {
+    let url = "https://jsonplaceholder.typicode.com/users";
+    let response = await fetch(url);
+    let data = await response.json();
+    let html = data.map(function (item) {
+        return "<li>" + item.id + " " + item.name + " " + item.email + "</li>";
     })
-})
-.then(function (dbUsers) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            console.log("Сервер: трансформирую данные для клиента");
-            console.log("...");
-            let users = dbUsers.map(function(user){
-                return {
-                    id: user.uid,
-                    firstName: user.name,
-                    timestamp: Date.now()
-                }
-            })
-            resolve(users)
-        }, 500);
-    })
-})
-.then(function (users) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            console.log("Клиент: получил данные и отображаю их", users);
-            resolve()
-        }, 1000);
-    })
-})
-.catch(function(error){
-    console.log(error);    
-})
-.finally(function(){
-    console.log("Finally");    
-});
+    document.querySelector("#list").insertAdjacentHTML("afterbegin", html.join(" "));
+};
