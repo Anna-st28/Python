@@ -9,8 +9,8 @@ async function loadTodos() {
     });
 
     let html = completedTodos.map(function(item) {
-        return "<li>" + item.id + " " + item.title + "</li>";
+        return `Пользователь: ${item.userId} выполнил задачу № ${item.id} "${item.title}"`;
     });
 
-    document.querySelector("#list").insertAdjacentHTML("afterbegin", html.join(" "));
+    document.querySelector("#list").insertAdjacentHTML("afterbegin", html.map(text => `<li>${text}</li>`).join(" "));
 }
