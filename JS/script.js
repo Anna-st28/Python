@@ -2227,14 +2227,20 @@ $ - конец строки (после последовательности н�
 //         });
 // }
 
-document.querySelector("#load").addEventListener("click", loadUsers);
+// document.querySelector("#load").addEventListener("click", loadUsers);
 
-async function loadUsers() {
-    let url = "https://jsonplaceholder.typicode.com/users";
-    let response = await fetch(url);
-    let data = await response.json();
-    let html = data.map(function (item) {
-        return "<li>" + item.id + " " + item.name + " " + item.email + "</li>";
-    })
-    document.querySelector("#list").insertAdjacentHTML("afterbegin", html.join(" "));
-};
+// async function loadUsers() {
+//     let url = "https://jsonplaceholder.typicode.com/users";
+//     let response = await fetch(url);
+//     let data = await response.json();
+//     let html = data.map(function (item) {
+//         return "<li>" + item.id + " " + item.name + " " + item.email + "</li>";
+//     })
+//     document.querySelector("#list").insertAdjacentHTML("afterbegin", html.join(" "));
+// };
+
+// window.alert("Hello");
+// window.document.querySelector("#list").insertAdjacentHTML("afterbegin", HTMLAllCollection.join(" "));
+
+let box = document.querySelector("#box");
+console.log(box.getBoundingClientRect);
