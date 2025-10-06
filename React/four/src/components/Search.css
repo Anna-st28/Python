@@ -19,7 +19,7 @@
     background: #00405c;
     color: #FFF;
     padding: 6px 16px;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     box-shadow: inset 1px 1px 4px 2px #FFF;
     border: 2px solid #00405c;
@@ -36,4 +36,33 @@
 .radio label{
     margin-right: 60px;
     font-size: 20px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 50px;
+}
+
+.pages {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.btn {
+    background: #00405c;
+    color: #FFF;
+    padding: 6px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 4px 2px #FFF;
+    border: 2px solid #00405c;
+    margin-left: 10px;
+}
+
+.btn.active {
+    background: #006d7f;
+    border: 2px solid #005962;
 }

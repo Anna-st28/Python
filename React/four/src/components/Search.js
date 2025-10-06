@@ -35,7 +35,16 @@ class Search extends React.Component {
         )
     }
 
+    goToPage = (pageNumber) => {
+        this.setState(
+            { page: pageNumber },
+            () => { this.props.searchMovie(this.state.search, this.state.type, this.state.page) }
+        )
+    }
+
     render() {
+        const pageButtons = Array.from({ length: 5 }, (_, i) => i + 1);
+
         return (
             <>
                 <div className="search">
@@ -59,6 +68,17 @@ class Search extends React.Component {
                 </div>
                 <div className="navigation">
                     <button className="btn" onClick={this.prevPage}>Prev</button>
+                    <div className="pages">
+                        {pageButtons.map(number => (
+                            <button 
+                                key={number} 
+                                className={`btn ${number === this.state.page ? 'active' : ''}`} 
+                                onClick={() => this.goToPage(number)}
+                            >
+                                {number}
+                            </button>
+                        ))}
+                    </div>
                     <button className="btn" onClick={this.nextPage}>Next</button>
                 </div>
             </>
