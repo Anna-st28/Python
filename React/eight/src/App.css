@@ -15,13 +15,18 @@ h1, h2, h3{
 }
 
 a.active{
-  color: rgb(28, 167, 167);
+  color: rgb(45, 0, 245);
 }
 
 .my{
-  color: rgb(238, 34, 129);
+  color: rgb(190, 35, 81);
 }
 
 .orange{
-  color: rgb(245, 159, 0);
+  color: rgb(245, 180, 0);
+}
+
+.content{
+  margin: auto;
+  width: 500px;
 }
