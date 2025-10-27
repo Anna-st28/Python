@@ -6813,24 +6813,24 @@
 # print(msg)
 
 # Первая задача
-from jinja2 import Template
-
-html = """
-{% macro input_func(name, placeholder='', type='text') %}
-    <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
-{% endmacro %}
-
-{{ input_func('firstname', placeholder='Имя') }}
-{{ input_func('lastname', placeholder='Фамилия') }}
-{{ input_func('address', placeholder='Адрес') }}
-{{ input_func('phone', placeholder='Телефон') }}
-{{ input_func('email', placeholder='Почта') }}
-"""
-
-tm = Template(html)
-msg = tm.render()
-
-print(msg)
+# from jinja2 import Template
+#
+# html = """
+# {% macro input_func(name, placeholder='', type='text') %}
+#     <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
+# {% endmacro %}
+#
+# {{ input_func('firstname', placeholder='Имя') }}
+# {{ input_func('lastname', placeholder='Фамилия') }}
+# {{ input_func('address', placeholder='Адрес') }}
+# {{ input_func('phone', placeholder='Телефон') }}
+# {{ input_func('email', placeholder='Почта') }}
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
 
 # Вторая задача
 
@@ -6851,5 +6851,29 @@ print(msg)
 #
 # tm = Template(html)
 # msg = tm.render(menu_items=menu_items)
+#
+# print(msg)
+
+# from jinja2 import Environment, FileSystemLoader
+
+# person = [
+#     {"name": "Алексей"},
+#     {"name": "Никита"},
+#     {"name": "Михаил"},
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template("index.html")
+# msg = tm.render(users=person, title="About Jinja")
+#
+# print(msg)
+
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template("about.html")
+# msg = tm.render()
 #
 # print(msg)
