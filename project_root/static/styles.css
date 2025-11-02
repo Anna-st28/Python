@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFA500;
+}
+
+nav {
+    background-color: #004080;
+    padding: 30px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 200px;
+    text-decoration: none;
+}
+
+.courses {
+    display: flex;
+    justify-content: space-around;
+    margin-top 20px;
+}
+
+.course {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.course h2 {
+    background-color: #004080;
+    color: white;
+    padding: 10px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.course button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: #004080
+}
