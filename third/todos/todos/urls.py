@@ -1,5 +1,5 @@
 """
-URL configuration for personal_portfolio project.
+URL configuration for todos project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -15,19 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
-from skills import views
+from django.urls import path
+from todo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index"),
-    path('blog/', include('blog.urls')),
-    path('register/', views.register, name='register'),
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+
+    # Auth
+    path('signup/', views.signup_user, name="signupuser"),
+    path('logout/', views.logout_user, name="logoutuser"),
+    path('login/', views.login_user, name="loginuser"),
+
+    # Todo
+    path('current/', views.current_todos, name="currenttodos"),
+    path('', views.home, name="home"),
+    path('create/', views.create_todo, name="createtodo"),
+    path('todo/<int:todo_pk>/', views.view_todo, name="viewtodo"),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

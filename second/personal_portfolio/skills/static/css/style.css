@@ -110,79 +110,86 @@ body {
 .menu li{
     margin-left: 40px;
 }
-        body {
-            font-family: Arial, sans-serif;
-        }
 
-        .menu {
-            background-color: #333;
-            color: white;
-        }
+body {
+    font-family: Arial, sans-serif;
+}
 
-        .menu .wrap {
-            padding: 15px;
-        }
+.menu {
+    background-color: #333;
+    color: white;
+}
 
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.menu .wrap {
+    padding: 15px;
+}
 
-        .menu ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+ul {
+    list-style: none;
+    padding: 0;
+}
 
-        .menu ul li a {
-            color: white;
-            text-decoration: none;
-        }
+.menu ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
 
-        .tabs {
-            margin-top: 20px;
-        }
+.menu a,
+.logo {
+    color: #FFF;
+}
 
-        .tab-button {
-            padding: 10px 15px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            margin-right: 5px;
-            transition: background-color 0.3s;
-        }
+a {
+    text-decoration: none;
+}
 
-        .tab-button:hover {
-            background-color: #ddd;
-        }
+.tabs {
+    margin-top: 20px;
+}
 
-        .tab-content {
-            display: none; /* По умолчанию скрываем контент вкладок */
-            margin-top: 10px;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
+.tab-button {
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
 
-        .block {
-            display: flex;
-            justify-content: space-around; /* Разделяем контент по ширине */
-        }
+.tab-button:hover {
+    background-color: #ddd;
+}
 
-        .element {
-            border: 1px solid #ccc; /* Граница у каждого окошка */
-            padding: 10px;
-            width: 30%; /* Ширина каждого окошка */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Тень для окошка */
-            text-align: center; /* Центруем текст */
-        }
+.tab-content {
+    display: none;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
 
-        .buy-button {
-            background-color: #4CAF50; /* Зеленая кнопка */
-            color: white; /* Цвет текста кнопки */
-            border: none; /* Без границы у кнопки */
-            padding: 10px; /* Отступы внутри кнопки */
-            cursor: pointer; /* Указатель поверх кнопки */
-        }
+.block {
+    display: flex;
+    justify-content: space-around;
+}
 
-        .buy-button:hover {
-            background-color: #45a049; /* Более темный зеленый при наведении */
-        }
+.element {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 30%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.buy-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
